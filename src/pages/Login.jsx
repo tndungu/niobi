@@ -5,6 +5,8 @@ import {userActions } from '../_actions'
 import {Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import '../index.css'
+import { LoginHeader } from '../components/login/LoginHeader'
+import { Logo } from '../components/login/Logo'
 
 const Login = () => {
     const [inputs,setInputs] = useState({
@@ -39,27 +41,41 @@ const Login = () => {
     }
 
   return (
-    <div className="container register-container">
-        <div className="wrapper">
-            <h1 className="title">SIGN IN</h1>
-            
-            <Formik initialValues={inputs} validationSchema={validationSchema} onSubmit={handleSubmit}>
-                {({errors, touched, isSubmitting}) =>(
-                      <Form className="form-input">
-                          <Field name="email" type="text" placeholder="Email" className={'form-text form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                          <ErrorMessage name="email" component="div" className="invalid-feedback red" />
-                          <Field name="password" placeholder="Password" type="password" className={'form-text form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
-                          <ErrorMessage name="password" component="div" className="invalid-feedback" />
-                          <button type="submit" disabled={isSubmitting} className="form-button">
-                              {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                              LOGIN
-                          </button>
-                          <Link className="link btn btn-link" to="../register">REGISTER</Link>
-                      </Form>
-                )}
-            </Formik>
+    <>
+        <section>
+        <div className="contentBx">
+            <div className="formBx">
+               <LoginHeader component="login" />
+                <form>
+                    <div className="inputBx">
+                        <span>Username / Email Address</span>
+                        <input type="text" name=""/>
+                    </div>
+                    <div className="inputBx">
+                        <span>Password</span>
+                        <input type="password" name=""/>
+                    </div>
+                    <div className="remember">
+                        <span><Link className='link btn btn-link' to="../forgotpassword">Forgot Password</Link></span>
+                    </div>
+                    <div className="remember">
+                        <label><input type="checkbox" name=""/>Remember me</label>
+                    </div>
+                    <div className="remember">
+                        <label><input type="checkbox" name=""/>I agree to <a href="#">terms & conditions</a></label>
+                    </div>
+                    <div className="inputBx">
+                        <input type="submit" value="Sign in" name=""/>
+                    </div>
+                </form>
+                <div className="inputBx">
+                    <p>Don't have an account?<Link className='link btn btn-link' to="../register">Create account</Link></p>
+                </div>
+            </div>
         </div>
-    </div>
+       <Logo />
+    </section>
+    </>
   )
 }
 

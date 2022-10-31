@@ -1,5 +1,5 @@
 
-.container{
+/* .container{
 
   width: 100vw;
   height: 100vh;
@@ -7,16 +7,16 @@
   background-size: cover;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.register-container{
+/* .register-container{
   background: linear-gradient(
-      rgba(2, 80, 65, 0.1),
-      rgba(2, 80, 65, 0.1)
+      rgba(2, 80, 65, 0.5),
+      rgba(2, 80, 65, 0.5)
   ),
-  url("./assets/niobi.png") center;
-}
-
+  url("/assets/niobi.png") center;
+} */
+/* 
 .login-container{
   background: linear-gradient(
       rgba(255,255,255,0.5),
@@ -87,4 +87,4 @@
   display: flex;
   justify-content: flex-start;
 }
-
+ */

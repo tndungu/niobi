@@ -5,6 +5,8 @@ import {userActions } from '../_actions'
 import {Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import '../index.css'
+import { LoginHeader } from '../components/login/LoginHeader'
+import { Logo } from '../components/login/Logo'
 
 export const Register = () => {
 
@@ -50,31 +52,44 @@ export const Register = () => {
     }
 
   return (
-    <div className="container register-container">
-        <div className="wrapper">
-            <div className="title">CREATE AN ACCOUNT</div>
-            <Formik initialValues={user} validationSchema={validationSchema} onSubmit={handleSubmit}>
-                {({errors, touched, isSubmitting}) =>(
-                      <Form className="form-input">
-                      <Field name="firstName" type="text" placeholder="First Name" className={'form-text form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                          <ErrorMessage name="email" component="div" className="invalid-feedback red" />
-                          <Field name="lastName" type="text" placeholder="Last Name" className={'form-text form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                          <ErrorMessage name="email" component="div" className="invalid-feedback red" />
-                          <Field name="email" type="text" placeholder="Email" className={'form-text form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                          <ErrorMessage name="email" component="div" className="invalid-feedback red" />
-                          <Field name="password" placeholder="Password" type="password" className={'form-text form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
-                          <ErrorMessage name="password" component="div" className="invalid-feedback" />
-                          <Field name="confirmPassword" placeholder="Confirm Password" type="password" className={'form-text form-control' + (errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')} />
-                          <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback" />
-                          <button type="submit" disabled={isSubmitting} className="form-button">
-                              {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
-                              CREATE
-                          </button>
-                          <Link className="link btn btn-link" to="../login">LOGIN</Link>
-                      </Form>
-                )}
-            </Formik>
+    <>
+    <section>
+    <div className="contentBx">
+        <div className="formBx">
+           <LoginHeader component="register"/>
+            <form>
+            <div className="inputBx">
+                    <span>First Name</span>
+                    <input type="text" name=""/>
+                </div>
+                <div className="inputBx">
+                    <span>Last Name</span>
+                    <input type="text" name=""/>
+                </div>
+                <div className="inputBx">
+                    <span>Email</span>
+                    <input type="text" name=""/>
+                </div>
+                <div className="inputBx">
+                    <span>Password</span>
+                    <input type="password" name=""/>
+                </div>
+                <div className="inputBx">
+                    <span>Confirm Password</span>
+                    <input type="password" name=""/>
+                </div>
+                
+                <div className="inputBx">
+                    <input type="submit" value="Submit" name=""/>
+                </div>
+            </form>
+            <div className="inputBx">
+                <p>Already have an account? <Link className='link btn btn-link' to="../login">Login</Link></p>
+            </div>
         </div>
     </div>
+   <Logo />
+</section>
+</>
   )
 }

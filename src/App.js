@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import { useSelector } from 'react-redux';
 import {BrowserRouter as Router,Routes, Route} from 'react-router-dom'
 import './App.css';
+import { ForgotPassword } from './pages/ForgotPassword';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
+      <Route path="forgotpassword" element={<ForgotPassword />}/>
     </Routes>
   </Router>
   );
