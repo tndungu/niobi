@@ -11,7 +11,9 @@ import { Logo } from '../components/login/Logo'
 const Login = () => {
     const [inputs,setInputs] = useState({
         email:'',
-        password:''
+        password:'',
+        rememberMe:false,
+        tandc: false
     })
     const [submitted, setSubmitted] = useState(false)
     const dispatch = useDispatch()
@@ -21,7 +23,8 @@ const Login = () => {
         email: Yup.string()
             .email('Email is invalid')
             .required('Email is required'),
-        password: Yup.string().required('Password is required')
+        password: Yup.string().required('Password is required'),
+        tandc : Yup.boolean().oneOf([true],'Please accept the Terms and Conditions')
     })
 
     useEffect(() => {
@@ -30,7 +33,7 @@ const Login = () => {
 
  
     const handleSubmit = e => {
-        console.log({email:e.email, password: e.password});
+        console.log(e);
 
         setSubmitted(true)
         if(e.email && e.password){
@@ -46,28 +49,40 @@ const Login = () => {
         <div className="contentBx">
             <div className="formBx">
                <LoginHeader component="login" />
-                <form>
-                    <div className="inputBx">
-                        <span>Username / Email Address</span>
-                        <input type="text" name=""/>
-                    </div>
-                    <div className="inputBx">
-                        <span>Password</span>
-                        <input type="password" name=""/>
-                    </div>
-                    <div className="remember">
-                        <span><Link className='link btn btn-link' to="../forgotpassword">Forgot Password</Link></span>
-                    </div>
-                    <div className="remember">
-                        <label><input type="checkbox" name=""/>Remember me</label>
-                    </div>
-                    <div className="remember">
-                        <label><input type="checkbox" name=""/>I agree to <a href="#">terms & conditions</a></label>
-                    </div>
-                    <div className="inputBx">
-                        <input type="submit" value="Sign in" name=""/>
-                    </div>
-                </form>
+                <Formik initialValues={inputs} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                    {({errors, touched, isSubmitting}) =>(
+                        <Form className='form-input'>
+                            <div className='inputBx'>
+                                <span>Username / Email Address</span>
+                                <Field  name="email" type="text" placeholder="Email" className={'form-text form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                                <ErrorMessage name="email" component="div" className="invalid-feedback red" />
+                            </div>
+                            <div className='inputBx'>
+                                <span>Password</span>
+                                <Field name="password" placeholder="Password" type="password" className={'form-text form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className="remember">
+                                <span><Link className='link btn btn-link' to="../forgotpassword">Forgot Password</Link></span>
+                            </div>
+                            <div className="remember">
+                                <Field name="rememberMe" type="checkbox" className={'form-check-input' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                <label>Remember me</label>
+                            </div>
+                            <div className="remember">
+                                <Field name="tandc" type="checkbox" className={'form-check-input' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                <label>I agree to <a href="#">terms & conditions</a></label>
+                                <ErrorMessage name="tandc" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className='inputBx'>
+                                <button type="submit" disabled={isSubmitting} className="form-button">
+                                    {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
+                                    Sign In
+                                </button>
+                            </div>
+                        </Form>
+                    )}
+                </Formik>
                 <div className="inputBx">
                     <p>Don't have an account?<Link className='link btn btn-link' to="../register">Create account</Link></p>
                 </div>
@@ -76,7 +91,6 @@ const Login = () => {
        <Logo />
     </section>
     </>
-  )
-}
+  )}
 
 export default Login

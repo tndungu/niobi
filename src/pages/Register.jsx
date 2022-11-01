@@ -36,15 +36,7 @@ export const Register = () => {
     });
 
     const handleSubmit = e => {
-
-      const req = {
-        firstName:e.firstName,
-        lastName: e.lastName,
-        email: e.email,
-        password:e.password
-      };
-
-      console.log(req);
+      console.log(e);
       
         if(e.email && e.password){
             dispatch(userActions.register(e))
@@ -57,32 +49,43 @@ export const Register = () => {
     <div className="contentBx">
         <div className="formBx">
            <LoginHeader component="register"/>
-            <form>
-            <div className="inputBx">
-                    <span>First Name</span>
-                    <input type="text" name=""/>
-                </div>
-                <div className="inputBx">
-                    <span>Last Name</span>
-                    <input type="text" name=""/>
-                </div>
-                <div className="inputBx">
-                    <span>Email</span>
-                    <input type="text" name=""/>
-                </div>
-                <div className="inputBx">
-                    <span>Password</span>
-                    <input type="password" name=""/>
-                </div>
-                <div className="inputBx">
-                    <span>Confirm Password</span>
-                    <input type="password" name=""/>
-                </div>
-                
-                <div className="inputBx">
-                    <input type="submit" value="Submit" name=""/>
-                </div>
-            </form>
+           <Formik initialValues={user} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                    {({errors, touched, isSubmitting}) =>(
+                        <Form className='form-input'>
+                            <div className='inputBx'>
+                                <span>First Name</span>
+                                <Field  name="firstName" type="text" placeholder="" className={'form-text form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                                <ErrorMessage name="firstName" component="div" className="invalid-feedback red" />
+                            </div>
+                            <div className='inputBx'>
+                                <span>Last Name</span>
+                                <Field  name="lastName" type="text" placeholder="" className={'form-text form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                                <ErrorMessage name="lastName" component="div" className="invalid-feedback red" />
+                            </div>
+                            <div className='inputBx'>
+                                <span>Email</span>
+                                <Field  name="email" type="text" placeholder="" className={'form-text form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                                <ErrorMessage name="email" component="div" className="invalid-feedback red" />
+                            </div>
+                            <div className='inputBx'>
+                                <span>Password</span>
+                                <Field name="password" placeholder="" type="password" className={'form-text form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className='inputBx'>
+                                <span>Confirm Password</span>
+                                <Field name="confirmPassword" placeholder="" type="password" className={'form-text form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                <ErrorMessage name="confirmPassword" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className='inputBx'>
+                                <button type="submit" disabled={isSubmitting} className="form-button">
+                                    {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
+                                    Sign In
+                                </button>
+                            </div>
+                        </Form>
+                    )}
+                </Formik>
             <div className="inputBx">
                 <p>Already have an account? <Link className='link btn btn-link' to="../login">Login</Link></p>
             </div>
