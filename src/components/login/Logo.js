@@ -5,7 +5,7 @@ export const Logo = () => {
   return (
     <div className="imgBx">
       <div className="background-img">
-        <img src="/assets/rsz_2.jpg" />
+        <img src="/assets/2.jpg" />
       </div>
       <img className="logo-niobi" src="/assets/niobi-logo-bg.png" />
       <img className="logo-corporate" src="/assets/corporate.jpg" />
