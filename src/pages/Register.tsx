@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector } from 'react-redux'
 import {Link } from 'react-router-dom'
 import {userActions } from '../_actions'
@@ -35,11 +35,11 @@ export const Register = () => {
       ),
     });
 
-    const handleSubmit = e => {
+    const handleSubmit = (e: any) => {
       console.log(e);
       
         if(e.email && e.password){
-            dispatch(userActions.register(e))
+            //dispatch(userActions.register(e))
         }
     }
 

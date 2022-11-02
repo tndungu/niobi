@@ -1,7 +1,7 @@
 import React from 'react'
 import { Logo } from '../components/login/Logo'
-import { ResetPasswordHeader } from '../components/PasswordReset.js/ResetPasswordHeader'
-import './Pages.scss';
+import { ResetPasswordHeader } from '../components/PasswordReset/ResetPasswordHeader'
+import './Pages.css';
 
 export const ForgotPassword = () => {
   return (

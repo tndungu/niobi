@@ -1,5 +1,5 @@
 import React from 'react';
-import './ResetPasswordHeader.scss';
+import './ResetPasswordHeader.css';
 
 export const ResetPasswordHeader = () => {
   return (

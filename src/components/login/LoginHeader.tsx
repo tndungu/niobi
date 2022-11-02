@@ -1,7 +1,11 @@
 import React from 'react'
-import '../LoginHeader.scss'
+import '../LoginHeader.css'
 
-export const LoginHeader = ({component}) => {
+export interface LoginHeaderProps {
+  component: string
+}
+
+export const LoginHeader = ({component}: LoginHeaderProps) => {
     const welcome = component == 'login' ? "Welcome Back !" : "Get Started with Niobi";
     const msg = component == 'login' ? "Please enter your details" : "We would love ot learn more about your business.";
   return (

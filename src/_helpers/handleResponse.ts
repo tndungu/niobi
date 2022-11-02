@@ -1,5 +1,5 @@
-function handleResponse(response) {
-    return response.text().then(text => {
+export function handleResponse(response: Response) {
+    return response.text().then((text: string) => {
         const data = text && JSON.parse(text);
         if (!response.ok) {
             if (response.status === 401) {
@@ -13,6 +13,6 @@ function handleResponse(response) {
     });
 }
 
-function logout(){
+export function logout(){
     localStorage.removeItem('user')
 }

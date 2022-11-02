@@ -4,7 +4,7 @@ import {authentication } from '../_reducers/authentication.reducer'
 
 export const store =  configureStore({
   reducer: {
-    authentication,
+   // authentication,
     registration,
   },
 })

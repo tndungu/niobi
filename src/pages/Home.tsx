@@ -1,11 +1,11 @@
-import {useEffect} from 'react'
+import React, {useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 
 import {userActions } from '../_actions'
 
 const Home = () => {
   const dispatch = useDispatch()
-  const loggedIn = useSelector(state => state.authentication.loggedIn)
+  //const loggedIn = useSelector(state => state.authentication.loggedIn)
   
    useEffect(() => {
         // if(!loggedIn)
@@ -19,4 +19,4 @@ const Home = () => {
   )
 }
 
-export default Home  
+export default Home

@@ -7,14 +7,14 @@ export const userService = {
     register
 }
 
-function login(user){
+async function login(user){
     const requestOptions = {
         method:'POST',
         headers:{'Content-Type': 'application/json'},
         body: JSON.stringify(user)
     }
-    return fetch(`${config.apiUrl}/user/authenticate`,requestOptions)
-        .then(handleResponse)
+    const response = await fetch(`${config.apiUrl}/user/authenticate`, requestOptions)
+    return handleResponse(response)
 }
 
 function logout(){
@@ -23,12 +23,13 @@ function logout(){
     window.location.href = '/login'
 }
 
-function register(user){
+async function register(user){
 
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(user)
     }
-    return fetch(`${config.apiUrl}/user/register`,requestOptions).then(handleResponse)
+    const response = await fetch(`${config.apiUrl}/user/register`, requestOptions)
+    return handleResponse(response)
 }

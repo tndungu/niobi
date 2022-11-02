@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState,useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {Link,useLocation } from 'react-router-dom'
@@ -8,8 +9,17 @@ import '../index.css'
 import { LoginHeader } from '../components/login/LoginHeader'
 import { Logo } from '../components/login/Logo'
 
-const Login = () => {
-    const [inputs,setInputs] = useState({
+export interface ILogin {};
+
+interface LoginValues {
+    email: string,
+    password: string,
+    rememberMe: boolean,
+    tandc: boolean
+}
+
+const Login : React.FunctionComponent<ILogin> = () => {
+    const [inputs,setInputs] = useState<LoginValues>({
         email:'',
         password:'',
         rememberMe:false,
@@ -32,15 +42,16 @@ const Login = () => {
     },[]);
 
  
-    const handleSubmit = e => {
+    const handleSubmit = (e: any) => {
+        console.log("Login");
         console.log(e);
 
         setSubmitted(true)
-        if(e.email && e.password){
+        // if(e.target.email && e.password){
             
-            const {from } = location.state || {from: {pathname: "/"}}
-            dispatch(userActions.login(e, from))
-        }
+        //     const {from } = location.state || {from: {pathname: "/"}}
+            //dispatch(userActions.login(e, from))
+        //}
     }
 
   return (

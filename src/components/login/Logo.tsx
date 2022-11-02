@@ -1,5 +1,5 @@
 import React from "react";
-import '../LoginHeader.scss';
+import '../LoginHeader.css';
 
 export const Logo = () => {
   return (
