@@ -5,9 +5,12 @@ import {Link,useLocation } from 'react-router-dom'
 import {userActions } from '../_actions'
 import {Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import '../index.css'
+import './Pages.css'
 import { LoginHeader } from '../components/login/LoginHeader'
 import { Logo } from '../components/login/Logo'
+import showPwdImg from '../components/login/ShowPassword/show-password.svg';
+import hidePwdImg from '../components/login/ShowPassword/hide-password.svg';
+
 
 export interface ILogin {};
 
@@ -26,6 +29,8 @@ const Login : React.FunctionComponent<ILogin> = () => {
         tandc: false
     })
     const [submitted, setSubmitted] = useState(false)
+    const [isRevealPwd, setIsRevealPwd] = useState(false);
+
     const dispatch = useDispatch()
     const location = useLocation()
 
@@ -61,7 +66,7 @@ const Login : React.FunctionComponent<ILogin> = () => {
             <div className="formBx">
                <LoginHeader component="login" />
                 <Formik initialValues={inputs} validationSchema={validationSchema} onSubmit={handleSubmit}>
-                    {({errors, touched, isSubmitting}) =>(
+                    {({errors, touched, isSubmitting, handleChange, values}) =>(
                         <Form className='form-input'>
                             <div className='inputBx'>
                                 <span>Username / Email Address</span>
@@ -70,7 +75,14 @@ const Login : React.FunctionComponent<ILogin> = () => {
                             </div>
                             <div className='inputBx'>
                                 <span>Password</span>
-                                <Field name="password" placeholder="Password" type="password" className={'form-text form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                <div className='pwd-container'>
+                                    <Field name="password" placeholder="Password" type={isRevealPwd ? "text" : "password"} 
+                                    className={'form-text form-control' + (errors.password && touched.password ? ' is-invalid' : '')} 
+                                    value={values.password}
+                                    onChange={handleChange("password")}
+                                    />
+                                    <img title={isRevealPwd ? "Hide password" : "Show password"} src={isRevealPwd ? hidePwdImg : showPwdImg} onClick={() => setIsRevealPwd(prevState => !prevState)} />
+                                </div>
                                 <ErrorMessage name="password" component="div" className="invalid-feedback" />
                             </div>
                             <div className="remember">
