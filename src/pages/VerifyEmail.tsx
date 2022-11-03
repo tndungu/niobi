@@ -6,17 +6,19 @@ import { Logo } from '../components/login/Logo'
 export const VerifyEmail = () => {
   return (
     <>
-        <section>
+      <section>
         <div className="contentBx">
-            <div className="formBx">
-               <LoginHeader component="login" />
-               <div className="inputBx">
-                    <p>Don't have an account?<Link className='link btn btn-link' to="../register">Create account</Link></p>
-                </div>
+          <div className="formBx">
+
+            <LoginHeader component="login" />
+            <div className="inputBx">
+              <p>Don't have an account?<Link className='link btn btn-link' to="../register">Create account</Link></p>
             </div>
+
+          </div>
         </div>
-       <Logo />
-    </section>
+        <Logo />
+      </section>
     </>
   )
 }

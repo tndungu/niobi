@@ -6,11 +6,12 @@ import {Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import '../index.css'
 import { LoginHeader } from '../components/login/LoginHeader'
-import { Logo } from '../components/login/Logo'
+import { Logo } from '../components/login/Logo';
+import { UserRequest } from '../_actions';
 
 export const Register = () => {
 
-    const [user,setUser] = useState({
+    const [user,setUser] = useState<UserRequest>({
         firstName:'',
         lastName:'',
         email:'',
@@ -35,7 +36,7 @@ export const Register = () => {
       ),
     });
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e:any) => {
       console.log(e);
       
         if(e.email && e.password){

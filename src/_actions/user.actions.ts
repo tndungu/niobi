@@ -1,12 +1,21 @@
 import {userConstants} from '../_constants'
 import {userService } from '../_services'
-import {history } from '../_helpers'
+import {history } from '../_helpers';
+
 import { To } from 'history'
 
 export const userActions = {
     login,
     logout,
     register
+}
+
+export interface UserRequest {
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    confirmPassword: string
 }
 
 function login(user: any, from: To){
@@ -50,8 +59,8 @@ function logout(){
     return {type: userConstants.LOGOUT }
 }
 
-function register(user: any){
-    return (dispatch: (arg0: { type: string; user?: any; error?: any }) => void) => {
+function register(user: UserRequest){
+    return (dispatch: (arg0: { type: string; user?: UserRequest; error?: any }) => void) => {
         dispatch(request(user))
 
         userService.register(user)
@@ -79,7 +88,7 @@ function register(user: any){
         )
     }
 
-    function request(user: any){return {type:userConstants.REGISTER_REQUEST,user}}
-    function success(user: any) {return {type: userConstants.REGISTER_SUCCESS,user}}
-    function failure(error: any) { return {type: userConstants.REGISTER_FAILURE,error}}
+    function request(user: UserRequest){return {type:userConstants.REGISTER_REQUEST,user}}
+    function success(user: UserRequest) {return {type: userConstants.REGISTER_SUCCESS,user}}
+    function failure(error: UserRequest) { return {type: userConstants.REGISTER_FAILURE,error}}
 }

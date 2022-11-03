@@ -3,7 +3,7 @@ import { useDispatch,useSelector } from 'react-redux'
 
 import {userActions } from '../_actions'
 
-const Home = () => {
+export const Dashboard = () => {
   const dispatch = useDispatch()
   //const loggedIn = useSelector(state => state.authentication.loggedIn)
   
@@ -18,5 +18,3 @@ const Home = () => {
       </div>
   )
 }
-
-export default Home
