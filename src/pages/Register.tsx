@@ -88,7 +88,7 @@ export const Register = () => {
                     )}
                 </Formik>
             <div className="inputBx">
-                <p>Already have an account? <Link className='link btn btn-link' to="../login">Login</Link></p>
+                <p>Already have an account? <Link to="../login">Login</Link></p>
             </div>
         </div>
     </div>

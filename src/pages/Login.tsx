@@ -107,7 +107,7 @@ const Login : React.FunctionComponent<ILogin> = () => {
                     )}
                 </Formik>
                 <div className="inputBx">
-                    <p>Don't have an account?<Link className='link btn btn-link' to="../register">Create account</Link></p>
+                    <p>Don't have an account? <Link to="../register">Create account</Link></p>
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@ import {BrowserRouter as Router,Routes, Route} from 'react-router-dom';
 import './App.css';
 import { ForgotPassword } from './pages/ForgotPassword';
 import { VerifyEmail } from './pages/VerifyEmail';
-import { Sidebar } from './components/Sidebar/Sidebar';
+import { Sidebar } from './components/Navbar/Sidebar';
 import { Dashboard } from './pages/Dashboard';
 import { Admin } from './pages/Admin';
 import { Payables } from './pages/Payables';
@@ -20,23 +20,40 @@ export interface IAppProps {};
 
 const App:React.FunctionComponent<IAppProps> = () => {
   return (
+    // <Router>
+    //     <Routes>
+    //       <Route path="/" element={<Login />} />
+    //       <Route path="login" element={<Login />} />
+    //       <Route path="register" element={<Register />} />
+    //       <Route path="forgotpassword" element={<ForgotPassword />} />
+    //       <Route path='verify-email' element={<VerifyEmail />} />
+    //       <Route element={<SidebarLayout />}>
+    //         <Route index element={<Dashboard/>} />
+    //         <Route path='admin' element={<Admin />} />
+    //         <Route path='dashboard' element={<Dashboard />} />
+    //         <Route path='payables' element={<Payables />} />
+    //         <Route path='suppliers' element={<Suppliers />} />
+    //         <Route path='payments' element={<Payments />} />
+    //         <Route path="*" element={<Login/>} />
+    //       </Route>
+    //     </Routes>
+    // </Router>
+
     <Router>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="forgotpassword" element={<ForgotPassword />} />
-          <Route path='verify-email' element={<VerifyEmail />} />
-          <Route element={<SidebarLayout />}>
-            <Route index element={<Dashboard/>} />
-            <Route path='admin' element={<Admin />} />
-            <Route path='dashboard' element={<Dashboard />} />
-            <Route path='payables' element={<Payables />} />
-            <Route path='suppliers' element={<Suppliers />} />
-            <Route path='payments' element={<Payments />} />
-            <Route path="*" element={<Login/>} />
-          </Route>
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="forgotpassword" element={<ForgotPassword />} />
+        <Route path='verify-email' element={<VerifyEmail />} />
+        <Route index element={<Dashboard />} />
+        {/* <Route path='admin' element={<Admin />} />
+        <Route path='dashboard' element={<Dashboard />} />
+        <Route path='payables' element={<Payables />} />
+        <Route path='suppliers' element={<Suppliers />} />
+        <Route path='payments' element={<Payments />} />
+        <Route path="*" element={<Login />} /> */}
+      </Routes>
     </Router>
   );
 }
